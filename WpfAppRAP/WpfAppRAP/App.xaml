@@ -1,0 +1,26 @@
+﻿<Application x:Class="WpfAppRAP.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:WpfAppRAP"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <local:ResearcherController x:Key="rc"/>
+        <ObjectDataProvider x:Key="staffList"
+                            ObjectInstance="{StaticResource rc}"
+                            MethodName="GetViewableList">
+        </ObjectDataProvider>
+        <local:Student x:Key="st"/>
+        <ObjectDataProvider x:Key="studentList"
+                            ObjectInstance="{StaticResource rc}"
+                            MethodName="GetViewableStudentList">
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="LevelValues"
+                            ObjectType="{x:Type sys:Enum}"
+                            MethodName="GetValues">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="local:Level"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+    </Application.Resources>
+</Application>
